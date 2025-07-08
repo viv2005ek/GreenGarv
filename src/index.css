@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #059669;
+}
+
+/* Glassmorphism effect */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Custom gradients */
+.gradient-text {
+  background: linear-gradient(135deg, #10b981, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Loading animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Hover effects */
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Focus states */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+}
+
+/* Add glow effects to floating objects *//* Glow Effects */
+.glow-green {
+  filter: drop-shadow(0 0 6px rgba(74, 222, 128, 0.7));
+  animation: pulse-green 4s infinite ease-in-out;
+}
+
+.glow-emerald {
+  filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.7));
+}
+
+.glow-blue {
+  filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.7));
+  animation: pulse-blue 5s infinite ease-in-out;
+}
+
+.glow-yellow {
+  filter: drop-shadow(0 0 6px rgba(234, 179, 8, 0.7));
+}
+
+.glow-amber {
+  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.7));
+}
+
+.glow-lime {
+  filter: drop-shadow(0 0 6px rgba(132, 204, 22, 0.7));
+}
+
+.glow-teal {
+  filter: drop-shadow(0 0 6px rgba(20, 184, 166, 0.7));
+}
+
+@keyframes pulse-green {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(74, 222, 128, 0.7)); }
+  50% { filter: drop-shadow(0 0 12px rgba(74, 222, 128, 0.9)); }
+}
+
+@keyframes pulse-blue {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.7)); }
+  50% { filter: drop-shadow(0 0 14px rgba(96, 165, 250, 0.9)); }
+}
+
+/* Glass Card Base (if not already defined) */
+.glass-card {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
