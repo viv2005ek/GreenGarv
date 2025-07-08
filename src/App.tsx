@@ -10,6 +10,7 @@ import { RecyclingGuide } from './pages/RecyclingGuide'
 import { useAuth } from './hooks/useAuth'
 import { LoadingScreen } from './pages/LoadingScreen'
 
+
 function App() {
   const { user, loading } = useAuth()
   const [showLoading, setShowLoading] = useState(true)
@@ -41,6 +42,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={!user ? <Auth /> : <Navigate to="/dashboard" />} />
+       
           <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/auth" />} />
           <Route path="/tracker" element={user ? <CarbonTracker /> : <Navigate to="/auth" />} />
           <Route path="/scan" element={user ? <ProductScanner /> : <Navigate to="/auth" />} />

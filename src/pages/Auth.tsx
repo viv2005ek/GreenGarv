@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Lock, User, Chrome, Leaf } from 'lucide-react'
+import { Mail, Lock, User, Chrome, Leaf, MailCheck } from 'lucide-react'
 import { GlassCard } from '../components/ui/GlassCard'
 import { AnimatedButton } from '../components/ui/AnimatedButton'
 import { useAuth } from '../hooks/useAuth'
@@ -13,40 +13,102 @@ export function Auth() {
   const [name, setName] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [signupSuccess, setSignupSuccess] = useState(false)
 
   const { signIn, signUp, signInWithGoogle } = useAuth()
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault()
-  setLoading(true)
-  setError('')
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError('')
+    setSignupSuccess(false)
 
-  try {
-    if (isLogin) {
-      const { error } = await signIn(email, password)
-      if (error) throw error
-    } else {
-      // Only pass name if it's a signup
-      const { error } = await signUp(email, password, name)
-      if (error) throw error
+    try {
+      if (isLogin) {
+        const { error } = await signIn(email, password)
+        if (error) {
+          if (error.message.includes('Invalid login credentials')) {
+            setError('Account not found. Please sign up instead.')
+            setIsLogin(false)
+          } else {
+            throw error
+          }
+        }
+      } else {
+        const { error } = await signUp(email, password, name)
+        if (error) throw error
+        setSignupSuccess(true)
+      }
+    } catch (error: any) {
+      if (error.message !== 'Account not found. Please sign up instead.') {
+        setError(error.message || 'An error occurred during authentication')
+      }
+    } finally {
+      setLoading(false)
     }
-  } catch (error: any) {
-    setError(error.message || 'An error occurred during authentication')
-  } finally {
-    setLoading(false)
   }
-}
 
   const handleGoogleSignIn = async () => {
     setLoading(true)
+    setError('')
+    setSignupSuccess(false)
+    
     try {
       const { error } = await signInWithGoogle()
       if (error) throw error
     } catch (error: any) {
-      setError(error.message)
+      setError(error.message || 'Failed to sign in with Google')
     } finally {
       setLoading(false)
     }
+  }
+
+  if (signupSuccess) {
+    return (
+      <div className="min-h-screen text-white relative">
+        <Background />
+        
+        <div className="relative z-10 flex items-center justify-center p-4 min-h-screen">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="w-full max-w-md"
+          >
+            <GlassCard className="p-8 backdrop-blur-lg">
+              <div className="text-center mb-8">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                  className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mb-4 mx-auto"
+                >
+                  <MailCheck className="w-8 h-8 text-white" />
+                </motion.div>
+                <h1 className="text-3xl font-bold mb-2">Check Your Email</h1>
+                <p className="text-gray-300">
+                  We've sent a confirmation link to <span className="text-green-400">{email}</span>
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-gray-400 text-sm">
+                  Didn't receive the email? Check your spam folder or click below to resend.
+                </p>
+                
+                <AnimatedButton
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => setSignupSuccess(false)}
+                >
+                  Back to Sign In
+                </AnimatedButton>
+              </div>
+            </GlassCard>
+          </motion.div>
+        </div>
+      </div>
+    )
   }
 
   return (
