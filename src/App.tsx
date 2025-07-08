@@ -23,8 +23,8 @@ function App() {
     }, 5000) // 5 seconds minimum
 
     if (!loading) {
-      // If loading becomes false before 5 seconds, still wait
-      const wait = setTimeout(() => setShowLoading(false), 5000)
+      // If loading becomes false before 3 seconds, still wait
+      const wait = setTimeout(() => setShowLoading(false), 3000)
       return () => clearTimeout(wait)
     }
 
