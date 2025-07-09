@@ -220,7 +220,7 @@ export function Dashboard() {
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Left Column - Eco Score */}
           <div className="lg:col-span-1 space-y-6">
-            <GlassCard className="p-6 text-center hover:shadow-2xl hover:shadow-white/5 transition-all duration-500 hover:scale-[1.03] transform hover:-translate-y-2 group backdrop-blur-md">
+            <GlassCard className="p-6 text-center hover:shadow-2xl hover:shadow-white/5 transition-all duration-500 hover:scale-[1.03] transform hover:-translate-y-2 group backdrop-blur-md flex flex-col items-center justify-center">
               <div className="relative z-10">
                 <h2 className="text-xl font-bold mb-4 flex items-center justify-center gap-2">
                   <Sparkles className="w-5 h-5 text-green-400" />
