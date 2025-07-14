@@ -202,7 +202,7 @@ export function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen text-white relative overflow-hidden">
+    <div className="min-h-screen text-white overflow-hidden mt-16 relative ">
       <Background />
       
       <div className="relative z-10 p-4 max-w-7xl mx-auto">
@@ -211,7 +211,7 @@ export function Dashboard() {
           <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-400 bg-clip-text text-transparent animate-pulse">
             Welcome, {user?.user_metadata?.name || 'Eco Champion'}!
           </h1>
-          <p className="text-gray-300 transform transition-all duration-700 delay-300 relative top-4">
+          <p className="text-gray-300 transform transition-all duration-700 delay-300 relative ">
             Your sustainability dashboard • {new Date().toLocaleDateString()}
           </p>
         </div>

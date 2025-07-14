@@ -38,7 +38,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen">
-        <Navigation />
+        <Navigation ></Navigation>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={!user ? <Auth /> : <Navigate to="/dashboard" />} />
