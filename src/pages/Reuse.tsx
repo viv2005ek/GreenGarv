@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquare, Plus, X, MapPin, Filter, Search } from 'lucide-react';
+import { MessageSquare, Plus, X, MapPin, Search } from 'lucide-react';
 import { GlassCard } from '../components/ui/GlassCard';
 import { AnimatedButton } from '../components/ui/AnimatedButton';
 import { useAuth } from '../hooks/useAuth';
