@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { BarChart3, Scan, Recycle, User, Menu, X, LogOut } from "lucide-react";
+import { BarChart3, Scan, Recycle,TicketPlus , User, Menu, X, LogOut } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
 import { AnimatedLogo } from "./ui/AnimatedLogo";
 import { supabase } from "../lib/supabase";
+import { path } from "framer-motion/client";
 
 export function Navigation() {
   const { user, signOut } = useAuth();
@@ -19,6 +20,7 @@ export function Navigation() {
     { name: "Tracker", path: "/tracker", icon: BarChart3, requiresAuth: true },
     { name: "Scanner", path: "/scan", icon: Scan, requiresAuth: true },
     { name: "Recycle", path: "/recycle", icon: Recycle, requiresAuth: true },
+    {name: "Reuse" ,path: "/reuse", icon: TicketPlus, requiresAuth: true},
   ];
 
   const isActive = (path: string) => location.pathname === path;

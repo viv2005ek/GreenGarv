@@ -55,7 +55,7 @@ export function RecyclingGuide() {
   const markersRef = useRef<any[]>([]);
 
   // Radius options (in meters)
-  const radii = [50000, 100000, 200000, 300000, 400000, 500000, 600000];
+  const radii = [500000, 600000, 700000, 800000, 900000, 1000000, 1500000];
 
   // Define colors for each category
   const categoryColors = {
@@ -465,8 +465,11 @@ export function RecyclingGuide() {
                   disabled={loading}
                   className="w-full"
                 >
-                  <MapPin className="w-4 h-4 mr-2" />
-                  {loading ? 'Finding Centers...' : 'Find Nearby Centers'}
+               <div className="flex items-center">
+  <MapPin className="w-4 h-4 mr-2 text-green-500" />
+  {loading ? 'Finding Centers...' : 'Find Nearby Centers'}
+</div>
+
                 </AnimatedButton>
 
                 {location && (
@@ -483,8 +486,11 @@ export function RecyclingGuide() {
                     className="w-full"
                     variant="secondary"
                   >
-                    <Navigation className="w-4 h-4 mr-2" />
-                    Increase Search Radius
+                  <div className="flex items-center">
+  <Navigation className="w-4 h-4 mr-2 text-blue-500" />
+  Increase Search Radius
+</div>
+
                   </AnimatedButton>
                 )}
               </div>

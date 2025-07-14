@@ -9,6 +9,7 @@ import { ProductScanner } from './pages/ProductScanner'
 import { RecyclingGuide } from './pages/RecyclingGuide'
 import { useAuth } from './hooks/useAuth'
 import { LoadingScreen } from './pages/LoadingScreen'
+import {Reuse} from './pages/Reuse'
 
 
 function App() {
@@ -47,6 +48,8 @@ function App() {
           <Route path="/tracker" element={user ? <CarbonTracker /> : <Navigate to="/auth" />} />
           <Route path="/scan" element={user ? <ProductScanner /> : <Navigate to="/auth" />} />
           <Route path="/recycle" element={user ? <RecyclingGuide /> : <Navigate to="/auth" />} />
+          <Route path="/reuse" element={user ? <Reuse /> : <Navigate to="/auth" />} />
+          {/* Add more routes as needed */}
         </Routes>
       </div>
     </Router>

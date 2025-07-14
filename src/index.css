@@ -142,3 +142,12 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
 }
+/* For dark theme dropdown options */
+.dark-select option {
+  background-color: #1e293b; /* slate-800 */
+  color: white;
+}
+
+.dark-select:focus option:checked {
+  background-color: #0f172a; /* slate-900 */
+}
