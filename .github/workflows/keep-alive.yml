@@ -1,4 +1,3 @@
-
 name: Supabase Keep Alive
 
 on:
@@ -20,7 +19,7 @@ jobs:
           ACCESS_TOKEN=$(curl -s \
             -X POST \
             "${{ secrets.SUPABASE_URL }}/auth/v1/token?grant_type=password" \
-            -H "apikey: ${{ secrets. }}" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
             -H "Content-Type: application/json" \
             -d '{
               "email":"${{ secrets.DEMO_EMAIL }}",
@@ -60,4 +59,3 @@ jobs:
             -H "Authorization: Bearer $ACCESS_TOKEN"
 
           echo "Supabase keep alive completed."
-
