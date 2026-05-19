@@ -20,7 +20,7 @@ jobs:
           ACCESS_TOKEN=$(curl -s \
             -X POST \
             "${{ secrets.SUPABASE_URL }}/auth/v1/token?grant_type=password" \
-            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "apikey: ${{ secrets. }}" \
             -H "Content-Type: application/json" \
             -d '{
               "email":"${{ secrets.DEMO_EMAIL }}",
@@ -32,31 +32,31 @@ jobs:
           # user_scores
           curl -s \
             "${{ secrets.SUPABASE_URL }}/rest/v1/user_scores?select=*" \
-            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
             -H "Authorization: Bearer $ACCESS_TOKEN"
 
           # carbon_activities
           curl -s \
             "${{ secrets.SUPABASE_URL }}/rest/v1/carbon_activities?select=*&limit=5" \
-            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
             -H "Authorization: Bearer $ACCESS_TOKEN"
 
           # barcode_scans
           curl -s \
             "${{ secrets.SUPABASE_URL }}/rest/v1/barcode_scans?select=*&limit=5" \
-            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
             -H "Authorization: Bearer $ACCESS_TOKEN"
 
           # listings
           curl -s \
             "${{ secrets.SUPABASE_URL }}/rest/v1/listings?select=*&limit=5" \
-            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
             -H "Authorization: Bearer $ACCESS_TOKEN"
 
           # global_stats
           curl -s \
             "${{ secrets.SUPABASE_URL }}/rest/v1/global_stats?select=*" \
-            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
             -H "Authorization: Bearer $ACCESS_TOKEN"
 
           echo "Supabase keep alive completed."
